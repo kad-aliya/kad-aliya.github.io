@@ -11,6 +11,7 @@
     "animate.css": "^4.1.0",
     "core-js": "^3.6.5",
     "fullpage-vue": "^2.1.1",
+    "fullpage.js": "^3.0.8",
     "vue": "^2.6.11",
     "vue-images-loaded": "^1.1.2",
     "vue-scrollto": "^2.18.1"
