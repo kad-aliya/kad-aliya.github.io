@@ -1,105 +1,186 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'is-visible': isImagesLoaded}" v-images-loaded="imageLoaded">
     <div class="screen--first-wrapper" id="screen-first-wrapper">
       <div class="screen screen--first" id="screen-first">
-        <div class="description">
-          <h1 class="h1">Я Алия</h1>
-          <p class="text">
-            Я дизайнер тралал и все такое тут около двух строчек будет в общей сложности Я дизайнер тралал и все такое тут около двух строчек будет в общей сложност
-          </p>
+        <div class="content">
+          <div class="description">
+            <h1 class="h1">Я Алия</h1>
+            <p class="text">
+              Я дизайнер тралал и все такое тут около двух строчек будет в общей сложности Я дизайнер тралал и все такое тут около двух строчек будет в общей сложност
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="screen--second-wrapper" id="screen-second-wrapper" v-waypoint="{ active: true, callback: onWaypointSecondScreen }">
-      <div class="screen screen--second" id="screen-second">
-        <div class="header">
-          <div class="project-1-wrap" 
-          :style="{
-            background: isAfterSecondScreen ? '#fbcd22' : 'transparent'
-          }">
-            <h1 v-show="!isAfterSecondScreen" class="h1 text-red">Некоммерческие работы</h1>
-            <div class="project-1-img-wrapper"
+    <div class="screens-wrapper">
+      <div class="screen--second-wrapper" id="screen-second-wrapper" v-waypoint="{ active: true, callback: onWaypointSecondScreen }">
+        <div class="screen screen--second" id="screen-second">
+          <div class="content">
+            <div class="header">
+              <div class="project-1-wrap" 
               :style="{
-                width: projectFirstWidth + 'px',
-                height: projectFirstHeight,
-                transform: 'translate3d(' + projectFirstLeft + 'px, ' + projectFirstTop + 'px, 0)'
+                background: isAfterSecondScreen ? '#fbcd22' : 'transparent'
               }">
-              <img src="./assets/images/project-1.jpg">
+                <h1 v-show="!isAfterSecondScreen" class="h1 text-red">Некоммерческие работы</h1>
+                <div class="project-1-img-wrapper"
+                  :style="{
+                    width: projectFirstWidth + 'px',
+                    height: projectFirstHeight,
+                    transform: 'translate3d(' + projectFirstLeft + 'px, ' + projectFirstTop + 'px, 0)'
+                  }">
+                  <img src="./assets/images/project-1.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen--third-wrapper" v-waypoint="{ active: true, callback: onWaypointThirdScreen }">
+        <div class="content">
+          <div class="blocks" :class="{'animate__animated animate__fadeInUp': scrolledToThirdScreen}">
+            <div class="blocks-item blocks-item--first">
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-1.jpg" alt="">
+              </div>
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-2.jpg" alt="">
+              </div>
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-3.jpg" alt="">
+              </div>
+
+              <div class="block-row-item">
+                <div class="block-row-title">
+                  Концепт интернет– магазина бренда одежды “TOFT”
+                </div>
+                <div class="block-row-desc">
+                  <p>
+                    Целью проекта являлось осуществление нескольких задач, среди которых: повысить узнаваемость бренда; увеличить продажи.
+                  </p>
+                  <p>
+                    Реализация данного проекта осуществлялась в рамках курса по веб-дизайну. Использованные в данном проекте фотографии принадлжат их владельцам.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="blocks-item blocks-item--second">
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-4.jpg" alt="">
+              </div>
+
+              <div class="block-row-item-flex">
+                <div class="block-row-item">
+                  <img src="./assets/images/projects/image-5.jpg" alt="">
+                </div>
+                <div class="block-row-item">
+                  <img src="./assets/images/projects/image-6.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="blocks-item blocks-item--third">
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-7.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen--forth-wrapper" v-waypoint="{ active: true, callback: onWaypointForthScreen }">
+        <div class="content">
+          <div class="blocks" :class="{'animate__animated animate__fadeInUp': scrolledToForthScreen}">
+            <div class="blocks-item blocks-item--first">
+              <div class="block-row-item">
+                <img src="./assets/images/projects/civilwar-1.jpg" alt="">
+              </div>
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-2.jpg" alt="">
+              </div>
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-3.jpg" alt="">
+              </div>
+
+              <div class="block-row-item">
+                <div class="block-row-title">
+                  Концепт интернет– магазина бренда одежды “TOFT”
+                </div>
+                <div class="block-row-desc">
+                  <p>
+                    Целью проекта являлось осуществление нескольких задач, среди которых: повысить узнаваемость бренда; увеличить продажи.
+                  </p>
+                  <p>
+                    Реализация данного проекта осуществлялась в рамках курса по веб-дизайну. Использованные в данном проекте фотографии принадлжат их владельцам.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="blocks-item blocks-item--second">
+              <div class="block-row-item">
+                <img src="./assets/images/projects/image-4.jpg" alt="">
+              </div>
+
+              <div class="block-row-item-flex">
+                <div class="block-row-item">
+                  <img src="./assets/images/projects/image-5.jpg" alt="">
+                </div>
+                <div class="block-row-item">
+                  <img src="./assets/images/projects/image-6.jpg" alt="">
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="screen--third-wrapper">
-      <div class="blocks">
-        <div class="blocks-item blocks-item--first">
-          <div class="block-row-item">
-            <img src="./assets/images/projects/image-1.jpg" alt="">
-          </div>
-          <div class="block-row-item">
-            <img src="./assets/images/projects/image-2.jpg" alt="">
-          </div>
-          <div class="block-row-item">
-            <img src="./assets/images/projects/image-3.jpg" alt="">
-          </div>
 
-          <div class="block-row-item">
-            <div class="block-row-title">
-              Концепт интернет– магазина бренда одежды “TOFT”
-            </div>
-            <div class="block-row-desc">
-              <p>
-                Целью проекта являлось осуществление нескольких задач, среди которых: повысить узнаваемость бренда; увеличить продажи.
-              </p>
-              <p>
-                Реализация данного проекта осуществлялась в рамках курса по веб-дизайну. Использованные в данном проекте фотографии принадлжат их владельцам.
-              </p>
-            </div>
-          </div>
+    <div class="persons-wrapper">
+      <div class="persons-content">
+        <div class="person-item"
+          v-show="showPersonNumber === 1">
+          <img src="./assets/images/person.svg">
         </div>
 
-        <div class="blocks-item blocks-item--second">
-          <div class="block-row-item">
-            <img src="./assets/images/projects/image-4.jpg" alt="">
-          </div>
-
-          <div class="block-row-item-flex">
-            <div class="block-row-item">
-              <img src="./assets/images/projects/image-5.jpg" alt="">
-            </div>
-            <div class="block-row-item">
-              <img src="./assets/images/projects/image-6.jpg" alt="">
-            </div>
-          </div>
+        <div class="person-item"
+          v-show="showPersonNumber === 2 &&
+          percentSecondScreen < 100">
+          <img src="./assets/images/person-2.svg">
         </div>
-        <div class="blocks-item blocks-item--third">
-          <div class="block-row-item">
-            <img src="./assets/images/projects/image-7.jpg" alt="">
+
+        <div class="person-item" 
+          v-show="showPersonNumber === 2 && 
+          percentSecondScreen >= 100">
+          <div class="person-item-img-wrap">
+            <img src="./assets/images/person-3.svg">
           </div>
         </div>
       </div>
     </div>
+<!-- 
+    <div class="persons">
+      <div class="person person--first"
+        :style="{
+          opacity: showPersonNumber === 1 ? 1 : 0,
+          backgroundSize: personSize + '% auto',
+          backgroundPosition: 'right ' + personPositionRight + 'px top ' + personPositionTop + 'px'
+        }"></div>
 
-    <div class="person person--first"
-      :style="{
-        opacity: showPersonNumber === 1 ? 1 : 0,
-        backgroundSize: personSize + '% auto',
-        backgroundPosition: 'right ' + personPositionRight + 'px top ' + personPositionTop + 'px'
-      }"></div>
+      <div class="person person--second" v-show="percentSecondScreen < 100"
+        :style="{
+          opacity: showPersonNumber === 2 ? 1 : 0,
+          backgroundSize: personSize + '% auto',
+          backgroundPosition: 'right ' + personPositionRight + 'px top ' + personPositionTop + 'px'
+        }"></div>
 
-    <div class="person person--second" v-show="percentSecondScreen < 100"
-      :style="{
-        opacity: showPersonNumber === 2 ? 1 : 0,
-        backgroundSize: personSize + '% auto',
-        backgroundPosition: 'right ' + personPositionRight + 'px top ' + personPositionTop + 'px'
-      }"></div>
-
-    <div class="person person--third" v-show="percentSecondScreen >= 100"
-      :style="{
-        opacity: showPersonNumber === 2 ? 1 : 0
-      }"></div>
+      <div class="person person--third" v-show="percentSecondScreen >= 100"
+        :style="{
+          opacity: showPersonNumber === 2 ? 1 : 0
+        }"></div>
+    </div> -->
 
     <div class="arrow">
       <svg width="55" height="37" viewBox="0 0 55 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +191,8 @@
 </template>
 
 <script>
+import imagesLoaded from 'vue-images-loaded'
+import VueScrollTo from 'vue-scrollto';
 // import HelloWorld from './components/HelloWorld.vue'
 
 export default {
@@ -117,8 +200,13 @@ export default {
   components: {
     // HelloWorld
   },
+  directives: {
+    imagesLoaded
+  },
   data() {
     return {
+      isImagesLoaded: false,
+
       percent: 0,
       percentSecondScreen: 0,
       personSize: 80,
@@ -134,7 +222,16 @@ export default {
       projectFirstLeft: 80,
       projectFirstTop: 192,
 
-      isAfterSecondScreen: false
+      isAfterSecondScreen: false,
+
+      fullpageOpts: {
+        start: 0,
+        dir: 'v',
+        duration: 500
+      },
+
+      scrolledToThirdScreen: false,
+      scrolledToForthScreen: false
     }
   },
   // computed: {
@@ -151,7 +248,14 @@ export default {
     }
   },
   methods: {
-    checkPersonSize() {
+    imageLoaded() {
+      console.log('imageLoaded')
+      this.isImagesLoaded = true;
+    },
+    checkPersonSize(direction, e) {
+      // console.log('direction: ', direction)
+      // console.log('e: ', e)
+      
       var st = window.pageYOffset || document.documentElement.scrollTop;
       // console.log('st: ', st);
       var firstScreen = document.getElementById('screen-first');
@@ -237,11 +341,11 @@ export default {
 
           const project1TopMaxAfter = 84;
           const project1TopStartAfter = 0;
-          this.projectFirstTop = this.setValue(project1TopMaxAfter, project1TopStartAfter, percentSecondScreenAfter, true, true, false);
+          this.projectFirstTop = this.setValue(project1TopMaxAfter, project1TopStartAfter, percentSecondScreenAfter, true);
           
           const project1WidthMaxAfter = project1WidthMax - 156;
           const project1WidthStartAfter = project1WidthMax;
-          const projectFirstWidthAfter = this.setValue(project1WidthMaxAfter, project1WidthStartAfter, percentSecondScreenAfter, false, true);
+          const projectFirstWidthAfter = this.setValue(project1WidthMaxAfter, project1WidthStartAfter, percentSecondScreenAfter, false);
           this.projectFirstWidth = projectFirstWidthAfter;
           this.projectFirstHeight = 'auto';
           this.isAfterSecondScreen = true;
@@ -252,7 +356,36 @@ export default {
     },
 
     onWaypointSecondScreen(point) {
+      console.log('onWaypointSecondScreen: ', point)
       this.secondScreenWay = point.going;
+    },
+
+    onWaypointThirdScreen({going, direction}) {
+      console.log('onWaypointThirdScreen: ', going, direction)
+      
+      if (going === 'in' && direction === 'top') {
+        // var st = window.pageYOffset || document.documentElement.scrollTop;
+        // window.scrollTo(0, st);
+        VueScrollTo.scrollTo(document.querySelector('.screen--third-wrapper'), 800);
+        this.scrolledToThirdScreen = true;
+      }
+
+      if (going === 'out' && direction === 'bottom') {
+        this.scrolledToThirdScreen = false;
+      }
+    },
+
+    onWaypointForthScreen({going, direction}) {
+      console.log('onWaypointThirdScreen: ', going, direction)
+      // var st = window.pageYOffset || document.documentElement.scrollTop;
+      // window.scrollTo(0, st);
+      if (going === 'in' && direction === 'top') {
+        VueScrollTo.scrollTo(document.querySelector('.screen--forth-wrapper'), 800);
+        this.scrolledToForthScreen = true;
+      }
+      if (going === 'out' && direction === 'bottom') {
+        this.scrolledToForthScreen = false;
+      }
     },
     setValue(max, start, percent, isIncrease = true, isConsole) {
       if (isConsole) {
@@ -306,9 +439,19 @@ export default {
         console.log('value 3: ', value)
       }
       return value;
+    },
+    setVhProperty() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
   },
   mounted() {
+    this.setVhProperty();
+
+    window.addEventListener('resize', () => {
+      this.setVhProperty();
+    });
+
     var lastScrollTop = 0;
     var firstScreen = document.getElementById('screen-first');
     var firstScreenHeight = firstScreen.offsetHeight;
@@ -319,7 +462,7 @@ export default {
     this.tempHeightSecond = secondScreenHeight;
 
     // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-    window.addEventListener("scroll", () => { // or window.addEventListener("scroll"....
+    window.addEventListener("scroll", (e) => { // or window.addEventListener("scroll"....
       var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
       var direction;
       if (st > lastScrollTop){
@@ -331,7 +474,7 @@ export default {
       }
       lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 
-      this.checkPersonSize(direction);
+      this.checkPersonSize(direction, e);
     }, false);
   }
 }
@@ -347,46 +490,31 @@ export default {
 
   position: relative;
   min-width: 1440px;
+  opacity: 0;
+
+  &.is-visible {
+    opacity: 1;
+    transition: opacity ease .3s;
+  }
+}
+
+.content {
+  max-width: 1440px;
+  min-width: 720px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .screen {
   width: 100%;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .screen--first-wrapper {
   background-color: $red-color;
   position: relative;
   height: 500vh;
-}
-
-.person {
-  position: fixed;
-  top: 0;
-  right: 0;
-  // background-image: url('./assets/images/person.svg'), url('./assets/images/road1.svg');
-  // background-position: top right;
-  // background-position: 500px -130px, top right;
-  background-position: right -245px top -130px;
-  //background-size: 80% auto, auto;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100vh;
-  // transition: opacity ease .3s;
-}
-
-.person--first {
-  background-image: url('./assets/images/person.svg');
-}
-
-.person--second {
-  background-image: url('./assets/images/person-2.svg');
-}
-
-.person--third {
-  background-image: url('./assets/images/person-3.svg');
-  background-size: auto;
-  background-position: right 0px bottom -31px;
 }
 
 .screen--first {
@@ -489,8 +617,14 @@ export default {
 
 .screen--third-wrapper {
   background: #fbcd22;
-  padding: 0 78px;
-  padding-bottom: 300px;
+  // padding: 0 78px;
+  // padding-bottom: 300px;
+}
+
+.screen--forth-wrapper {
+  background: #283160;
+  // padding: 0 78px;
+  // padding-bottom: 300px;
 }
 
 .blocks {
@@ -499,6 +633,11 @@ export default {
   max-width: 1284px;
   padding-top: 12px;
   margin: 0 auto;
+  opacity: 0;
+
+  &.animate__animated {
+    opacity: 1;
+  }
 }
 
 .blocks-item {
@@ -566,5 +705,82 @@ export default {
       margin-bottom: 12px;
     }
   }
+}
+.fullpage-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.persons-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: none;
+  display: flex;
+}
+
+.persons-content {
+  max-width: 1440px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: visible;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// .persons {
+//   position: relative;
+//   max-width: 1440px;
+//   min-width: 720px;
+//   width: 100%;
+//   margin: 0 auto;
+// }
+
+.person-item {
+  display: inline-block;
+}
+
+.person-item-img-wrap {
+  width: 371px;
+  height: 774px;
+}
+
+.person {
+  position: absolute;
+  top: 0;
+  right: 0;
+  // background-image: url('./assets/images/person.svg'), url('./assets/images/road1.svg');
+  // background-position: top right;
+  // background-position: 500px -130px, top right;
+  background-position: right -245px top -130px;
+  //background-size: 80% auto, auto;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  // transition: opacity ease .3s;
+}
+
+.person--first {
+  background-image: url('./assets/images/person.svg');
+}
+
+.person--second {
+  background-image: url('./assets/images/person-2.svg');
+}
+
+.person--third {
+  background-image: url('./assets/images/person-3.svg');
+  background-size: auto;
+  background-position: right 0px bottom -31px;
 }
 </style>
